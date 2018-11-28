@@ -1,0 +1,30 @@
+{
+  "name": "tellojs",
+  "version": "0.0.1",
+  "description": "tello wrapper library to be able to control de dji drone",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:dev": "jest --watchAll test/unit",
+    "test:cov": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "push": "yarn test && git push",
+    "deploy:major": "yarn version --major",
+    "deploy:minor": "yarn version --minor",
+    "deploy:patch": "yarn version --patch",
+    "deploy:push": "git push && git push --tags",
+    "preversion": "yarn test"
+  },
+  "repository": "git@github.com:kanekotic/tellojs.git",
+  "author": "kanekotic <alvarojosepl@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "faker": "4.1.0",
+    "jest": "23.6.0"
+  },
+  "jest": {
+    "testMatch": [
+      "**/test/**/*-test.js"
+    ]
+  }
+}
