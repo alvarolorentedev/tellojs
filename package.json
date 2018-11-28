@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "test:dev": "jest --watchAll test/unit",
+    "test:dev": "jest --watchAll",
     "test:cov": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "push": "yarn test && git push",
     "deploy:major": "yarn version --major",
@@ -14,6 +14,12 @@
     "deploy:push": "git push && git push --tags",
     "preversion": "yarn test"
   },
+  "keywords": [
+    "tello",
+    "dji",
+    "drone",
+    "iot"
+  ],
   "repository": "git@github.com:kanekotic/tellojs.git",
   "author": "kanekotic <alvarojosepl@gmail.com>",
   "license": "MIT",
