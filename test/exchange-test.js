@@ -27,7 +27,7 @@ describe('exchange', () => {
     it('should have method send able to send commands', async () => {
         const expectedResult = faker.random.uuid(),
             command = faker.random.uuid(),
-            expecteBuffer = new Buffer.from(command)
+            expecteBuffer = Buffer.from(command)
 
         mockSocket.send.mockImplementation((_,__,___,____,_____,fun) => fun(undefined, expectedResult))
 

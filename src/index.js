@@ -4,14 +4,14 @@ const constants = require('./constants'),
     commander = require('./exchanger')
 
 const connect = () => {
-    commander.send('command')
+    commander.send('command').catch(console.error).then(console.log)
 }
 const takeoff = () => {
-    commander.send('takeoff')
+    commander.send('takeoff').catch(console.error).then(console.log)
 }
 
 const land = () => {
-    commander.send('land')
+    commander.send('land').catch(console.error).then(console.log)
 }
 
 const videoOn = () => {
