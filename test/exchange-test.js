@@ -14,7 +14,7 @@ jest.mock('../src/constants.json', ()=>({
   }), { virtual: true })
 
 const mockSocket = { send: jest.fn() },
-    commandExchange = require('../src/command-exchange'),
+    commandExchange = require('../src/exchanger'),
     dgram = require('dgram'),
     constants = require('../src/constants.json'),
     faker = require('faker')
@@ -22,7 +22,7 @@ const mockSocket = { send: jest.fn() },
 describe('exchange', () => {
     it('should dgram should has been initialized with udp4', () => {
         expect(dgram.createSocket).toBeCalledWith('udp4')
-    });
+    })
 
     it('should have method send able to send commands', async () => {
         const expectedResult = faker.random.uuid(),
@@ -35,5 +35,14 @@ describe('exchange', () => {
 
         expect(mockSocket.send).toBeCalledWith(expecteBuffer, 0, expecteBuffer.length, constants.ports.command, constants.hosts.remote, expect.any(Function))
         expect(result).toEqual(expectedResult)
-    });
-});
+    })
+
+    it('should fail promise if error', async () => {
+        const expectedError = faker.random.uuid(),
+            command = faker.random.uuid()
+
+        mockSocket.send.mockImplementation((_,__,___,____,_____,fun) => fun(expectedError))
+
+        expect(commandExchange.send(command)).rejects.toEqual(expectedError)
+    })
+})

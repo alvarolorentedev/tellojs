@@ -1,7 +1,7 @@
 const constants = require('./constants'),
     dgram = require('dgram'),
     serverImages = dgram.createSocket('udp4'),
-    commander = require('./command-exchange')
+    commander = require('./exchanger')
 
 const connect = () => {
     commander.send('command')
@@ -35,11 +35,7 @@ const videoOn = () => {
 
 const videoOff = () => {
     serverImages.close(constants.ports.video, '0.0.0.0');
-
-    var message = new Buffer('streamoff')
-    client.send(message, 0, message.length, constants.ports.command, constants.host, function(err, bytes) {
-		if (err) throw err
-    })
+    commander.send('streamoff')
 }
 
 module.exports = { connect, takeoff, land, videoOn, videoOff }
