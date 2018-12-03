@@ -1,0 +1,15 @@
+os: osx
+language: node_js
+node_js:
+  - node
+script:
+  - yarn test:cov
+after_success:
+  - if [[ "${TRAVIS_EVENT_TYPE}" = "cron" ]]; then ./upgrade.sh; fi
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
