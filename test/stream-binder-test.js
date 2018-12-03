@@ -36,18 +36,43 @@ describe('streamer', () => {
         expect(result).toEqual(expectedResult)
     });
 
-    it('should reject if error with udp bind', async () => {
+    it('should bind the udp server state port', async () => {
+        const expectedResult = faker.random.uuid()
+
+        mockSocket.bind.mockImplementation((_,__,fun) => fun(undefined, expectedResult))
+
+        let result = await binder.state.start()
+
+        expect(mockSocket.bind).toHaveBeenCalledWith(constants.ports.state, constants.hosts.local, expect.any(Function))
+        expect(result).toEqual(expectedResult)
+    });
+
+    it('should reject if error with udp bind for video', async () => {
         const expectedError = faker.random.uuid()
 
         mockSocket.bind.mockImplementation((_,__,fun) => fun(expectedError))
 
         expect(binder.video.start()).rejects.toEqual(expectedError)
     });
-    
 
+    it('should reject if error with udp bind for state', async () => {
+        const expectedError = faker.random.uuid()
+
+        mockSocket.bind.mockImplementation((_,__,fun) => fun(expectedError))
+
+        expect(binder.state.start()).rejects.toEqual(expectedError)
+    });
+    
     it('should unbind the udp server video port', async () => {
 
         binder.video.stop()
+
+        expect(mockSocket.close).toHaveBeenCalledWith()
+    });
+
+    it('should unbind the udp server state port', async () => {
+
+        binder.state.stop()
 
         expect(mockSocket.close).toHaveBeenCalledWith()
     });

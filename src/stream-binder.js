@@ -9,8 +9,18 @@ const videoStreamStart = () => new Promise((resolve, reject) => server.bind(cons
         resolve(result)
 }))
 
+const stateStreamStart = () => new Promise((resolve, reject) => server.bind(constants.ports.state, constants.hosts.local, (error, result) => {
+    if(error)
+        reject(error)
+    else
+        resolve(result)
+}))
+
 const videoStreamStop = () => server.close()
 
+const stateStreamStop = () => server.close()
+
 module.exports = { 
-    video: { start: videoStreamStart, stop: videoStreamStop } 
+    video: { start: videoStreamStart, stop: videoStreamStop } ,
+    state: { start: stateStreamStart, stop: stateStreamStop }
 }
