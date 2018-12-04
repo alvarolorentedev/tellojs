@@ -11,7 +11,7 @@ add it to your project using `npm install tellojs --save` or `yarn add tellojs`
 this sdk provide functions when you import for the next capabilities:
 
 ```js
-const sdk = require('../src/index')
+const sdk = require('tellojs')
 //CONTROL COMMANDS
 await sdk.control.connect()                     // Enter SDK mode.
 await sdk.control.takeoff()                     // Auto takeoff.
