@@ -1,6 +1,6 @@
 # ![logomakr_123ujk](https://user-images.githubusercontent.com/3071208/49430616-cddbc300-f7ab-11e8-9356-381c730d0839.png)
 
-An unuficial sdk for tello based on the documentation.
+An unoficial sdk for tello based on the official [documentation](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf).
 
 ## Installation
 
@@ -35,9 +35,13 @@ await sdk.control.flip.front()                  // Flip in forward.
 await sdk.read.speed()                          // Obtain current speed (cm/s).
 await sdk.read.battery()                        // Obtain current battery percentage.
 await sdk.read.time()                           // Obtain current flight time.
+await sdk.read.height()                         // Obtain get height (cm)
+await sdk.read.temperature()                    // Obtain temperature (°C)
+await sdk.read.attitude()                       // Obtain IMU attitude data
+await sdk.read.barometer()                      // Obtain barometer value (m)
+await sdk.read.tof()                            // Obtain distance value from TOF（cm）
+await sdk.read.acceleration()                   // Obtain IMU angular acceleration data (0.001g)
 await sdk.read.wifi()                           // Obtain Wi-Fi SNR.
-await sdk.read.sdk()                            // Obtain the Tello SDK version.
-await sdk.read.serial()                         // Obtain the Tello serial number
 ```
 
 ##### Web graphic by <a href="http://www.flaticon.com/authors/picol">picol</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Makr">LogoMakr.com</a> https://logomakr.com/09u4Zz

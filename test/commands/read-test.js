@@ -26,13 +26,33 @@ describe('read commands', () => {
         expect(commander.send).toBeCalledWith('wifi?')
     })
 
-    it('should have command for sdk check', () => {
-        readCommands.sdk()
-        expect(commander.send).toBeCalledWith('sdk?')
+    it('should have command for height check', () => {
+        readCommands.height()
+        expect(commander.send).toBeCalledWith('height?')
     })
 
-    it('should have command for serial number check', () => {
-        readCommands.serial()
-        expect(commander.send).toBeCalledWith('sn?')
+    it('should have command for temperature check', () => {
+        readCommands.temperature()
+        expect(commander.send).toBeCalledWith('temp?')
+    })
+
+    it('should have command for attitude check', () => {
+        readCommands.attitude()
+        expect(commander.send).toBeCalledWith('attitude?')
+    })
+
+    it('should have command for barometer check', () => {
+        readCommands.barometer()
+        expect(commander.send).toBeCalledWith('baro?')
+    })
+
+    it('should have command for acceleration check', () => {
+        readCommands.acceleration()
+        expect(commander.send).toBeCalledWith('acceleration?')
+    })
+
+    it('should have command for tof check', () => {
+        readCommands.tof()
+        expect(commander.send).toBeCalledWith('tof?')
     })
 })

@@ -6,10 +6,18 @@ const battery = () => commander.send('battery?')
 
 const time = () => commander.send('time?')
 
+const height = () => commander.send('height?')
+
+const temperature = () => commander.send('temp?')
+
+const attitude = () => commander.send('attitude?')
+
+const barometer = () => commander.send('baro?')
+
+const acceleration = () => commander.send('acceleration?')
+
+const tof = () => commander.send('tof?')
+
 const wifi = () => commander.send('wifi?')
 
-const sdk = () => commander.send('sdk?')
-
-const serial = () => commander.send('sn?')
-
-module.exports = { speed, battery, time, wifi, sdk, serial }
+module.exports = { speed, battery, time, wifi, height, temperature, attitude, barometer, tof, acceleration }
