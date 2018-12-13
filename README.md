@@ -52,7 +52,7 @@ await sdk.control.flip.front()                  // Flip in forward.
 //SET COMMANDS
 await sdk.set.speed(x)                          // set speed to x cm/s
 await sdk.set.rc(x, y, z, yaw)                  // Send RC control via four channels.
-await sdk.set.rc(ssid, password)                // Set Wi-Fi with SSID password
+await sdk.set.wifi(ssid, password)              // Set Wi-Fi with SSID password
 
 //READ COMMANDS
 await sdk.read.speed()                          // Obtain current speed (cm/s).
