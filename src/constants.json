@@ -5,6 +5,7 @@
     },
     "ports":{
         "command": 8889,
+        "response": 8001,
         "state": 8890,
         "video": 11111
     }

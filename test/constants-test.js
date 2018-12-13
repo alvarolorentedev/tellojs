@@ -11,6 +11,10 @@ describe('constants', () => {
         expect(constants.ports.command).toBe(8889)
     });
 
+    it('should contain port for response', () => {
+        expect(constants.ports.response).toBe(8001)
+    });
+
     it('should contain port for state', () => {
         expect(constants.ports.state).toBe(8890)
     });
