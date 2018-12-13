@@ -1,6 +1,14 @@
 # ![logomakr_123ujk](https://user-images.githubusercontent.com/3071208/49430616-cddbc300-f7ab-11e8-9356-381c730d0839.png)
+[![Build Status](https://travis-ci.org/kanekotic/tellojs.svg?branch=master)](https://travis-ci.org/kanekotic/tellojs)
+[![Coverage Status](https://coveralls.io/repos/github/kanekotic/tellojs/badge.svg?branch=master)](https://coveralls.io/github/kanekotic/tellojs?branch=master)
+[![npm](https://img.shields.io/npm/dt/tellojs.svg)](https://github.com/kanekotic/tellojs)
+[![GitHub license](https://img.shields.io/github/license/kanekotic/tellojs.svg)](https://github.com/kanekotic/tellojs/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/kanekotic/tellojs/graphs/commit-activity)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/kanekotic/)
 
-An unoficial sdk for tello based on the official [documentation](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf).
+## Motivation
+
+Provide an async promise based unofficial sdk for the tello drone based on the official [documentation](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf).
 
 ## Installation
 
