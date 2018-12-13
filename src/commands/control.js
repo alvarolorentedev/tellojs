@@ -28,12 +28,18 @@ const clockwise = (angle) => commander.send(`cw ${angle}`)
 
 const counterClockwise = (angle) => commander.send(`ccw ${angle}`)
 
+const go = (end,speed) => commander.send(`go ${end.x} ${end.y} ${end.z} ${speed}`)
+
+const curve = (start, end,speed) => commander.send(`curve ${start.x} ${start.y} ${start.z} ${end.x} ${end.y} ${end.z} ${speed}`)
+
 module.exports = { 
     connect, 
     takeOff, 
     land, 
     emergency,
     stop,
+    go,
+    curve,
     move: { up, down, left, right, back, front },
     rotate: { clockwise, counterClockwise },
     flip: {

@@ -100,4 +100,31 @@ describe('control commands', () => {
         expect(commander.send).toBeCalledWith(`ccw ${angle}`)
     })
 
+    it('should have command for go to position', () => {
+        const end = {
+            x: faker.random.number(500),
+            y: faker.random.number(500),
+            z: faker.random.number(500)
+        }
+        const speed = faker.random.number(100)
+        controlCommands.go(end,speed)
+        expect(commander.send).toBeCalledWith(`go ${end.x} ${end.y} ${end.z} ${speed}`)
+    })
+
+    it('should have command for curve to position', () => {
+        const start = {
+            x: faker.random.number(500),
+            y: faker.random.number(500),
+            z: faker.random.number(500)
+        },
+        end = {
+            x: faker.random.number(500),
+            y: faker.random.number(500),
+            z: faker.random.number(500)
+        },
+        speed = faker.random.number(100)
+        controlCommands.curve(start, end, speed)
+        expect(commander.send).toBeCalledWith(`curve ${start.x} ${start.y} ${start.z} ${end.x} ${end.y} ${end.z} ${speed}`)
+    })
+
 })
