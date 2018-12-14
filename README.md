@@ -25,8 +25,11 @@ const x = number,
     y = number,
     z = number,
     speed = number,
+    yaw = number,
     start = {x, y, z},
-    end = {x, y, z}
+    end = {x, y, z},
+    ssid = string,
+    password = string
 
 //CONTROL COMMANDS
 await sdk.control.connect()                     // Enter SDK mode.
