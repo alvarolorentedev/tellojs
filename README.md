@@ -68,6 +68,32 @@ await sdk.read.barometer()                      // Obtain barometer value (m)
 await sdk.read.tof()                            // Obtain distance value from TOF（cm）
 await sdk.read.acceleration()                   // Obtain IMU angular acceleration data (0.001g)
 await sdk.read.wifi()                           // Obtain Wi-Fi SNR.
+
+//STREAM STATE
+const stateEmitter = sdk.receiver.state.bind()  // Binding to port of state
+stateEmitter.on('message', res => console.log)  // React to messages on received
+/*
+Example output:
+{ 
+    pitch: 1,
+    roll: 0,
+    yaw: 0,
+    speed: { x: 0, y: 0, z: 0 },
+    temperature: { low: 51, high: 53 },
+    tof: 6553,
+    heigh: 0,
+    battery: 87,
+    barometer: 24.65,
+    time: 0,
+    acceleration: { x: 16, y: 3, z: -990 } 
+}
+*/
+sdk.receiver.state.end()                        // Stop receiving messages
+
+//STREAM IMAGE
+const stateEmitter = sdk.receiver.image.bind()  // Binding to port of state
+stateEmitter.on('message', res => console.log)  // React to messages on received, output would be binary frame
+sdk.receiver.image.end()                        // Stop receiving messages
 ```
 
 ##### Web graphic by <a href="http://www.flaticon.com/authors/picol">picol</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Makr">LogoMakr.com</a> https://logomakr.com/09u4Zz
