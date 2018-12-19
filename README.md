@@ -33,7 +33,7 @@ const x = number,
 
 //CONTROL COMMANDS
 await sdk.control.connect()                     // Enter SDK mode.
-await sdk.control.takeoff()                     // Auto takeoff.
+await sdk.control.takeOff()                     // Auto takeoff.
 await sdk.control.land()                        // Auto landing.
 await sdk.control.emergency()                   // Stop motors immediately
 await sdk.control.stop()                        // Hovers in the air
@@ -43,7 +43,7 @@ await sdk.control.move.left(x)                  // move left to “x” cm.
 await sdk.control.move.right(x)                 // move right to “x” cm.
 await sdk.control.move.front(x)                 // move forward to “x” cm.
 await sdk.control.move.back(x)                  // move backwards to “x” cm.
-await sdk.control.move.go(end, speed )          //  fly to x y z in speed (cm/s)
+await sdk.control.move.go(end, speed)           //  fly to x y z in speed (cm/s)
 await sdk.control.move.curve(start, end, speed) //  fly to x y z in speed (cm/s)
 await sdk.control.rotate.clockwise(x)           // rotate clockwise 'x' degrees.
 await sdk.control.rotate.counterClockwise(x)    // rotate counter clockwise 'x' degrees.
