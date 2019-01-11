@@ -72,6 +72,10 @@ await sdk.read.wifi()                           // Obtain Wi-Fi SNR.
 //STREAM STATE
 const stateEmitter = sdk.receiver.state.bind()  // Binding to port of state
 stateEmitter.on('message', res => console.log)  // React to messages on received
+
+//STREAM VIDEO
+const stateEmitter = sdk.receiver.state.bind()  // Binding to port of state
+stateEmitter.on('message', res => console.log)  // React to messages on received
 /*
 Example output:
 { 

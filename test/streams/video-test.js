@@ -22,8 +22,13 @@ jest.mock('../../src/constants.json', ()=>({
     }
   }), { virtual: true })
 
+  jest.mock('../../src/exchanger', () => ({
+    send: jest.fn()
+}))
+
 const video = require('../../src/streams/video.js'),
     dgram = require('dgram'),
+    commander = require('../../src/exchanger'),
     constants = require('../../src/constants.json'),
     faker = require('faker')
 
@@ -34,6 +39,7 @@ describe('video stream', () => {
 
     it('should bind to listening port', () => {
         video.bind()
+        expect(commander.send).toBeCalledWith('streamon')
         expect(mockSocket.bind).toBeCalledWith(constants.ports.video)
     })
 
@@ -52,6 +58,7 @@ describe('video stream', () => {
 
     it('should close socket on listening port and reset emitter', () => {
         video.close()
+        expect(commander.send).toBeCalledWith('streamoff')
         expect(mockSocket.close).toBeCalled()
     })
 })
