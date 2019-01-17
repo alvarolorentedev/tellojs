@@ -9,15 +9,23 @@ const dgram = require('dgram'),
 
 client.on('message', message => _local.emitter.emit('message', message.slice(2)))
 
-const bind = () => {
+const bind = async () => {
+    try {
+        await commander.send('streamon')
+    } catch (_) {
+        throw "Unable to start video stream"
+    }
     client.bind(constants.ports.video)
     _local.emitter = new EventEmitter()
-    commander.send('streamon')
     return _local.emitter
 }
 
-const close = () => {
-    commander.send('streamoff')
+const close = async () => {
+    try {  
+        await commander.send('streamoff')
+    } catch (error) {
+        throw "Unable to stop video stream"
+    }
     client.close()
 }
 

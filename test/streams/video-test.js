@@ -33,18 +33,37 @@ const video = require('../../src/streams/video.js'),
     faker = require('faker')
 
 describe('video stream', () => {
+    beforeEach(() => {
+        commander.send.mockReset()
+        mockSocket.bind.mockReset()
+        mockSocket.close.mockReset()
+    });
     it('should dgram should has been initialized with udp4', () => {
         expect(dgram.createSocket).toBeCalledWith('udp4')
     })
 
-    it('should bind to listening port', () => {
-        video.bind()
+    it('should bind to listening port', async () => {
+        commander.send.mockReturnValue(Promise.resolve())
+        await video.bind()
         expect(commander.send).toBeCalledWith('streamon')
         expect(mockSocket.bind).toBeCalledWith(constants.ports.video)
     })
 
+    it('should not bind if errored command', async () => {
+        commander.send.mockReturnValue(Promise.reject())
+        try {
+            await video.bind()
+            fail()        
+        } catch (error) {
+            expect(error).toEqual("Unable to start video stream")
+            expect(mockSocket.bind).not.toBeCalled()
+        }
+    })
+
     it('should get an event Emitter that receives messages from udp', async () => {
-        const emitter = video.bind(),
+        commander.send.mockReturnValue(Promise.resolve())
+
+        const emitter = await video.bind(),
             message = faker.random.uuid(),
             result = new Promise((resolve, reject) => {
                 emitter.on('message', (res) => {
@@ -56,9 +75,22 @@ describe('video stream', () => {
         expect(await result).toEqual(message.slice(2))
     })
 
-    it('should close socket on listening port and reset emitter', () => {
-        video.close()
+    it('should close socket on listening port and reset emitter', async () => {
+        commander.send.mockReturnValue(Promise.resolve())
+        await video.close()
         expect(commander.send).toBeCalledWith('streamoff')
         expect(mockSocket.close).toBeCalled()
+    })
+
+
+    it('should not close if unable to close video stream', async () => {
+        commander.send.mockReturnValue(Promise.reject())
+        try {
+            await video.close()
+            fail()        
+        } catch (error) {
+            expect(error).toEqual("Unable to stop video stream")
+            expect(mockSocket.close).not.toBeCalled()
+        }
     })
 })

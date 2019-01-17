@@ -72,15 +72,15 @@ await sdk.read.wifi()                           // Obtain Wi-Fi SNR.
 //STREAM STATE
 const stateEmitter = sdk.receiver.state.bind()  // Binding to port of state
 stateEmitter.on('message', res => console.log)  // React to messages on received
-stateEmitter.close()                            // stop emmitter
+sdk.receiver.state.close()                      // Stop receiving messages
 
 //STREAM VIDEO
 const videoEmitter = sdk.receiver.video.bind()  // Binding to port of video
 videoEmitter.on('message', res => console.log)  // React to messages on received
-videoEmitter.close()                            // stop emmitter
+sdk.receiver.video.close()                      // Stop receiving messages
 
 /*
-Example output:
+Example output of state:
 { 
     pitch: 1,
     roll: 0,
@@ -94,13 +94,9 @@ Example output:
     time: 0,
     acceleration: { x: 16, y: 3, z: -990 } 
 }
-*/
-sdk.receiver.state.end()                        // Stop receiving messages
 
-//STREAM IMAGE
-const stateEmitter = sdk.receiver.image.bind()  // Binding to port of state
-stateEmitter.on('message', res => console.log)  // React to messages on received, output would be binary frame
-sdk.receiver.image.end()                        // Stop receiving messages
+Example output of video: is binary ;)
+*/
 ```
 
 ##### Web graphic by <a href="http://www.flaticon.com/authors/picol">picol</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Makr">LogoMakr.com</a> https://logomakr.com/09u4Zz
