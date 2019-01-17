@@ -7,7 +7,7 @@ const dgram = require('dgram'),
         emitter: undefined
     }
 
-client.on('message', message => _local.emitter.emit('message', message.slice(2)))
+client.on('message', message => _local.emitter.emit('message', message))
 
 const bind = async () => {
     try {

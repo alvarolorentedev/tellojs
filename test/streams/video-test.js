@@ -72,7 +72,7 @@ describe('video stream', () => {
             })
         mockSocket.emit('message', message)
         expect(emitter).toBeInstanceOf(EventEmitter)
-        expect(await result).toEqual(message.slice(2))
+        expect(await result).toEqual(message)
     })
 
     it('should close socket on listening port and reset emitter', async () => {
