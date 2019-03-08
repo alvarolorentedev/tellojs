@@ -25,7 +25,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "coveralls": "3.0.3",
+    "codecov": "3.2.0",
     "faker": "4.1.0",
     "jest": "24.3.1"
   },

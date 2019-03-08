@@ -1,6 +1,6 @@
 # ![logomakr_123ujk](https://user-images.githubusercontent.com/3071208/49430616-cddbc300-f7ab-11e8-9356-381c730d0839.png)
 [![Build Status](https://travis-ci.org/kanekotic/tellojs.svg?branch=master)](https://travis-ci.org/kanekotic/tellojs)
-[![Coverage Status](https://coveralls.io/repos/github/kanekotic/tellojs/badge.svg?branch=master)](https://coveralls.io/github/kanekotic/tellojs?branch=master)
+[![codecov](https://codecov.io/gh/kanekotic/tellojs/branch/master/graph/badge.svg)](https://codecov.io/gh/kanekotic/tellojs)
 [![npm](https://img.shields.io/npm/dt/tellojs.svg)](https://github.com/kanekotic/tellojs)
 [![GitHub license](https://img.shields.io/github/license/kanekotic/tellojs.svg)](https://github.com/kanekotic/tellojs/blob/master/LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/kanekotic/tellojs/graphs/commit-activity)
