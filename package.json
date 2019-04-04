@@ -25,9 +25,9 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "codecov": "3.2.0",
+    "codecov": "3.3.0",
     "faker": "4.1.0",
-    "jest": "24.5.0"
+    "jest": "24.7.1"
   },
   "jest": {
     "testMatch": [
