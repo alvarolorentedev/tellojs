@@ -1,6 +1,6 @@
 {
   "name": "tellojs",
-  "version": "0.1.105",
+  "version": "0.1.106",
   "description": "async based library to be able to control de dji tello drone",
   "main": "src/index.js",
   "scripts": {
