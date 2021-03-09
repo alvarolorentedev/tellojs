@@ -4,7 +4,6 @@
 [![npm](https://img.shields.io/npm/dt/tellojs.svg)](https://github.com/kanekotic/tellojs)
 [![GitHub license](https://img.shields.io/github/license/kanekotic/tellojs.svg)](https://github.com/kanekotic/tellojs/blob/master/LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/kanekotic/tellojs/graphs/commit-activity)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/kanekotic/)
 
 ## Motivation
 
