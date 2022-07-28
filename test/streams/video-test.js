@@ -30,7 +30,7 @@ const video = require('../../src/streams/video.js'),
     dgram = require('dgram'),
     commander = require('../../src/exchanger'),
     constants = require('../../src/constants.json'),
-    faker = require('faker')
+    { faker } = require('@faker-js/faker')
 
 describe('video stream', () => {
     beforeEach(() => {
@@ -64,7 +64,7 @@ describe('video stream', () => {
         commander.send.mockReturnValue(Promise.resolve())
 
         const emitter = await video.bind(),
-            message = faker.random.uuid(),
+            message = faker.datatype.uuid(),
             result = new Promise((resolve, reject) => {
                 emitter.on('message', (res) => {
                     resolve(res)

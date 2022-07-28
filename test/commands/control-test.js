@@ -3,8 +3,8 @@ jest.mock('../../src/exchanger', () => ({
 }))
 
 const commander = require('../../src/exchanger'),
-    controlCommands = require('../../src/commands/control')
-    faker = require('faker')
+    controlCommands = require('../../src/commands/control'),
+    { faker } = require('@faker-js/faker')
 
 describe('control commands', () => {
     it('should have command for enter command mode', () => {
@@ -53,76 +53,76 @@ describe('control commands', () => {
     })
 
     it('should have command for go up', () => {
-        const distance = faker.random.number(500)
+        const distance = faker.datatype.number(500)
         controlCommands.move.up(distance)
         expect(commander.send).toBeCalledWith(`up ${distance}`)
     })
 
     it('should have command for go down', () => {
-        const distance = faker.random.number(500)
+        const distance = faker.datatype.number(500)
         controlCommands.move.down(distance)
         expect(commander.send).toBeCalledWith(`down ${distance}`)
     })
 
     it('should have command for go left', () => {
-        const distance = faker.random.number(500)
+        const distance = faker.datatype.number(500)
         controlCommands.move.left(distance)
         expect(commander.send).toBeCalledWith(`left ${distance}`)
     })
 
     it('should have command for go front', () => {
-        const distance = faker.random.number(500)
+        const distance = faker.datatype.number(500)
         controlCommands.move.front(distance)
         expect(commander.send).toBeCalledWith(`forward ${distance}`)
     })
 
     it('should have command for go back', () => {
-        const distance = faker.random.number(500)
+        const distance = faker.datatype.number(500)
         controlCommands.move.back(distance)
         expect(commander.send).toBeCalledWith(`back ${distance}`)
     })
 
     it('should have command for go right', () => {
-        const distance = faker.random.number(500)
+        const distance = faker.datatype.number(500)
         controlCommands.move.right(distance)
         expect(commander.send).toBeCalledWith(`right ${distance}`)
     })
 
     it('should have command for rotate clockwise', () => {
-        const angle = faker.random.number(360)
+        const angle = faker.datatype.number(360)
         controlCommands.rotate.clockwise(angle)
         expect(commander.send).toBeCalledWith(`cw ${angle}`)
     })
 
     it('should have command for rotate clockwise', () => {
-        const angle = faker.random.number(360)
+        const angle = faker.datatype.number(360)
         controlCommands.rotate.counterClockwise(angle)
         expect(commander.send).toBeCalledWith(`ccw ${angle}`)
     })
 
     it('should have command for go to position', () => {
         const end = {
-            x: faker.random.number(500),
-            y: faker.random.number(500),
-            z: faker.random.number(500)
+            x: faker.datatype.number(500),
+            y: faker.datatype.number(500),
+            z: faker.datatype.number(500)
         }
-        const speed = faker.random.number(100)
+        const speed = faker.datatype.number(100)
         controlCommands.go(end,speed)
         expect(commander.send).toBeCalledWith(`go ${end.x} ${end.y} ${end.z} ${speed}`)
     })
 
     it('should have command for curve to position', () => {
         const start = {
-            x: faker.random.number(500),
-            y: faker.random.number(500),
-            z: faker.random.number(500)
+            x: faker.datatype.number(500),
+            y: faker.datatype.number(500),
+            z: faker.datatype.number(500)
         },
         end = {
-            x: faker.random.number(500),
-            y: faker.random.number(500),
-            z: faker.random.number(500)
+            x: faker.datatype.number(500),
+            y: faker.datatype.number(500),
+            z: faker.datatype.number(500)
         },
-        speed = faker.random.number(100)
+        speed = faker.datatype.number(100)
         controlCommands.curve(start, end, speed)
         expect(commander.send).toBeCalledWith(`curve ${start.x} ${start.y} ${start.z} ${end.x} ${end.y} ${end.z} ${speed}`)
     })

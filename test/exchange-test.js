@@ -1,4 +1,6 @@
 jest.useFakeTimers();
+jest.spyOn(global, 'clearInterval');
+jest.spyOn(global, 'clearTimeout');
 const EventEmitter = require('events')
 class TestEmitter extends EventEmitter {
 }
@@ -26,10 +28,9 @@ jest.mock('../src/constants.json', ()=>({
 const commandExchange = require('../src/exchanger'),
     dgram = require('dgram'),
     constants = require('../src/constants.json'),
-    faker = require('faker')
+    { faker } = require('@faker-js/faker')
 
 describe('exchange', () => {
-
     beforeEach(() => {
         commandExchange._local.state = "idle"
     });
@@ -44,14 +45,14 @@ describe('exchange', () => {
 
     it('if message on event listener should alter state', () => {
         expect(commandExchange._local.state).toEqual("idle")
-        let newState = faker.random.uuid()
+        let newState = faker.datatype.uuid()
         mockSocket.emit('message', newState)
         expect(commandExchange._local.state).toEqual(newState)
     })
 
     it('should resolve if command returns ok', async () => {
-        const expectedResult = faker.random.uuid(),
-            command = faker.random.uuid(),
+        const expectedResult = faker.datatype.uuid(),
+            command = faker.datatype.uuid(),
             expecteBuffer = Buffer.from(command)
 
         const sendCommand = commandExchange.send(command)
@@ -68,8 +69,8 @@ describe('exchange', () => {
     })
 
     it('should reject if command returns error', async () => {
-        const expectedResult = faker.random.uuid(),
-            command = faker.random.uuid(),
+        const expectedResult = faker.datatype.uuid(),
+            command = faker.datatype.uuid(),
             expecteBuffer = Buffer.from(command)
 
         const send = commandExchange.send(command)
@@ -87,8 +88,8 @@ describe('exchange', () => {
     })
 
     it('should reject if timeout', async () => {
-        const expectedResult = faker.random.uuid(),
-            command = faker.random.uuid(),
+        const expectedResult = faker.datatype.uuid(),
+            command = faker.datatype.uuid(),
             expecteBuffer = Buffer.from(command)
 
         const send = commandExchange.send(command)
@@ -105,10 +106,10 @@ describe('exchange', () => {
     })
 
     it('should fail promise if error', async () => {
-        mockSocket.send.mockImplementation((_,__,___,____,_____,fun) => fun(faker.random.uuid()))
+        mockSocket.send.mockImplementation((_,__,___,____,_____,fun) => fun(faker.datatype.uuid()))
 
         try {
-            let send = commandExchange.send(faker.random.uuid())
+            let send = commandExchange.send(faker.datatype.uuid())
             jest.advanceTimersByTime(1000)
             await send
         } catch (error) {
@@ -120,10 +121,10 @@ describe('exchange', () => {
     })
 
     it('if a command is running no other command should be allowed', async () => {
-        mockSocket.send.mockImplementation((_,__,___,____,_____,fun) => fun(faker.random.uuid()))
+        mockSocket.send.mockImplementation((_,__,___,____,_____,fun) => fun(faker.datatype.uuid()))
         
-        let send = commandExchange.send(faker.random.uuid())
-        let send2 = commandExchange.send(faker.random.uuid())
+        let send = commandExchange.send(faker.datatype.uuid())
+        let send2 = commandExchange.send(faker.datatype.uuid())
 
         try {
             await send2
