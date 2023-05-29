@@ -25,7 +25,7 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "@faker-js/faker": "^8.0.1",
+    "@faker-js/faker": "^8.0.2",
     "codecov": "3.8.3",
     "jest": "29.5.0"
   },
